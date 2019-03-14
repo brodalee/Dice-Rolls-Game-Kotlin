@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+            android:text="Player Turn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/playerTurn"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"/>
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/first_dice"
+                android:layout_width="174dp"
+                android:layout_height="204dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/dice_1"/>
+
+        <ImageView
+                android:id="@+id/second_dice"
+                android:layout_width="174dp"
+                android:layout_height="204dp"
+                android:layout_weight="0.5"
+                android:src="@drawable/dice_1" tools:layout_editor_absoluteY="0dp"
+                tools:layout_editor_absoluteX="194dp"/>
+    </LinearLayout>
+
+
+    <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Roll the dice"
+            android:background="#f0ad4e"
+            android:id="@+id/roll"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+        <TextView
+                android:text="PlayerOne"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+        />
+
+        <TextView
+                android:text="PlayerTwo"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+        <TextView
+                android:text="Current Bank amount :"
+                android:textAlignment="center"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+        />
+        <TextView
+                android:id="@+id/pOneAmount"
+                android:text="Amount"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+        />
+        <TextView
+                android:text="Current Bank amount :"
+                android:layout_marginLeft="20dp"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+        />
+        <TextView
+                android:id="@+id/pTwoAmount"
+                android:text="Amount"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="@string/current_pot"
+        />
+
+        <TextView
+                android:id="@+id/current_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text=""
+        />
+
+
+    </LinearLayout>
+
+    <Button
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Get current Pot"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:background="#5cb85c"
+            android:id="@+id/get_current_pot"
+    />
+
+</LinearLayout>
