@@ -8,4 +8,5 @@
     <string name="hall_of_frame">Hall Of Frame</string>
     <string name="current_pot">Current Pot</string>
     <string name="sync">Sync</string>
+    <string name="second_player_pseudo">Second player pseudo</string>
 </resources>

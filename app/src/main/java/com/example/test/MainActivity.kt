@@ -14,6 +14,15 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), HallOfFrameCalls.CallBacks<Any?> {
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        this.Events()
+        Realm.init(this)
+        this.realm().initDataBase()
+    }
+
     /**
      * Si tout va bien, on récupère notre liste, et on
      * l'inject dans realm
@@ -50,14 +59,6 @@ class MainActivity : AppCompatActivity(), HallOfFrameCalls.CallBacks<Any?> {
 
     override fun onFailure() {
         Toast.makeText(this, "ERROR HAPPENED", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        this.Events()
-        Realm.init(this)
-        this.realm().initDataBase()
     }
 
     /**

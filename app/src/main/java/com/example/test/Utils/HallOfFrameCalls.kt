@@ -38,7 +38,6 @@ class HallOfFrameCalls {
                     callBackWeakReference.get()!!.onResponse(response.body()!!)
                 }
             }
-
         })
     }
 
@@ -56,13 +55,13 @@ class HallOfFrameCalls {
 
         call.enqueue(object : CallBacks<HallOfFrame>, Callback<HallOfFrame> {
             override fun onResponse(call: Call<HallOfFrame>, response: Response<HallOfFrame>) {
-                if(callBackWeakReference.get() != null) {
+                if (callBackWeakReference.get() != null) {
 
                 }
             }
 
             override fun onFailure(call: Call<HallOfFrame>, t: Throwable) {
-                if(callBackWeakReference.get() != null) {
+                if (callBackWeakReference.get() != null) {
                     callBackWeakReference.get()!!.onFailure()
                     Log.d("TAG ERROR", t.message)
                     Log.d("TAG ERROR", t.localizedMessage)
@@ -70,13 +69,15 @@ class HallOfFrameCalls {
             }
 
             override fun onResponse(hof: List<HallOfFrame>) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                if (callBackWeakReference.get() != null) {
+                }
             }
 
             override fun onFailure() {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                if (callBackWeakReference.get() != null) {
+                    callBackWeakReference.get()!!.onFailure()
+                }
             }
-
         })
     }
 }
