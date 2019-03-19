@@ -114,7 +114,7 @@ class MainActivity : AppCompatActivity(), HallOfFrameCalls.CallBacks<Any?> {
      * @return boolean
      */
     private fun verifyIfNamesAreFilled(): Boolean {
-        if (firstPlayerPseudo.text.toString() != "" && SecondPlayerPseudo.text.toString() != "") {
+        if (firstPlayerPseudo.text.toString().trim() != "" && SecondPlayerPseudo.text.toString().trim() != "") {
             return true
         }
         return false
