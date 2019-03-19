@@ -5,11 +5,11 @@ import android.support.v7.app.AppCompatActivity
 import com.example.test.Adapters.HofAdapter
 import com.example.test.Models.hof
 import io.realm.Realm
+import io.realm.RealmConfiguration
+import io.realm.Sort
 import kotlinx.android.synthetic.main.hallofframe.*
 
 class HallOfFrameActivity : AppCompatActivity() {
-
-    private var realm: Realm? = Realm.getDefaultInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +34,12 @@ class HallOfFrameActivity : AppCompatActivity() {
      * @return RealmResults
      */
     private fun getHallOfFrameDatas(): List<hof> {
+        var config = RealmConfiguration.Builder().name("db.realm").build()
+        var realm: Realm? = Realm.getInstance(config)
         realm!!.beginTransaction()
-        var results = realm?.where(hof::class.java)!!.findAll()
-        realm!!.commitTransaction()
+        var results = realm.where(hof::class.java)!!.sort("date", Sort.DESCENDING).findAll()
+        realm.commitTransaction()
+        realm.close()
         return results.toList()
     }
 }

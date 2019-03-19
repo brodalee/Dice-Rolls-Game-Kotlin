@@ -84,4 +84,14 @@
             android:layout_marginRight="75dp"
             android:id="@+id/hof"/>
 
+    <Button
+            android:text="@string/sync"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#e1e8ed"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="75dp"
+            android:layout_marginRight="75dp"
+            android:id="@+id/sync"/>
+
 </LinearLayout>

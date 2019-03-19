@@ -1,5 +1,6 @@
 package com.example.test.Adapters
 
+import android.annotation.SuppressLint
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -25,16 +26,28 @@ class HofAdapter(val list: List<hof>) : RecyclerView.Adapter<HofAdapter.HofViewH
         return list.size
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(viewHolder: HofViewHolder, position: Int) {
         var hallof = list.get(position)
         viewHolder.itemView.textView1.text = hallof.name + " : " + hallof.date.toString()
-        viewHolder.itemView.textView2.text = hallof.countnumber.toString() + " rolls for " + hallof.maxpoints.toString() + " pts."
+        viewHolder.itemView.textView2.text =
+            hallof.countnumber.toString() + " rolls for " + hallof.maxpoints.toString() + " pts."
         viewHolder.itemView.image.setImageResource(this.getImage(position))
     }
 
-    private fun getImage(pos: Int) = when(pos % 2 == 0) {
-            true -> R.drawable.ic_accessible_black_24dp
+    /**
+     * Récupère l'image selon le nombre de point choisi
+     *
+     * @return Int
+     */
+    private fun getImage(pos: Int): Int {
+        var drawable = when {
+            pos == 5 -> R.drawable.ic_account_circle_black_24dp
+            pos == 50 -> R.drawable.ic_account_circle_black_24dp
+            pos == 100 -> R.drawable.ic_account_circle_black_24dp
             else -> R.drawable.ic_account_circle_black_24dp
+        }
+        return drawable
     }
 
 }

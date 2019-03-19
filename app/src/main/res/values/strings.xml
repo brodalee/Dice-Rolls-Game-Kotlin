@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test</string>
+    <string name="app_name">DiceRolls</string>
     <string name="select_the_max_points_number">Select the max points number</string>
     <string name="_5">5</string>
     <string name="_50">50</string>
@@ -7,4 +7,5 @@
     <string name="let_s_play">Let\'s play</string>
     <string name="hall_of_frame">Hall Of Frame</string>
     <string name="current_pot">Current Pot</string>
+    <string name="sync">Sync</string>
 </resources>

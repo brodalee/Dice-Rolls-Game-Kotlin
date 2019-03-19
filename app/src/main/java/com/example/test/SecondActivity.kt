@@ -5,13 +5,23 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.example.test.Entity.*
+import com.example.test.Models.HallOfFrame
 import com.example.test.Models.hof
+import com.example.test.Utils.HallOfFrameCalls
 import io.realm.Realm
 import kotlinx.android.synthetic.main.game.*
 import java.util.*
 import kotlin.random.Random
 
-class SecondActivity : AppCompatActivity() {
+class SecondActivity : AppCompatActivity(), HallOfFrameCalls.CallBacks<Any?> {
+    override fun onResponse(hof: List<HallOfFrame>) {
+        MainActivity().initDataBase()
+    }
+
+    override fun onFailure() {
+        Toast.makeText(this, "Error HAPPENED", Toast.LENGTH_SHORT).show()
+        //Log.d("TAG", "ERROR HAPPENED")
+    }
 
     lateinit var players: List<User>
 
@@ -23,7 +33,10 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.game)
         this.maxPoints = intent.getIntExtra("maxPoints", 0)
-        this.players = listOf(User(intent.getStringExtra("p1"), Bank(0)), User(intent.getStringExtra("p2"), Bank(0)))
+        this.players = listOf(
+            User(intent.getStringExtra("p1"), Bank(0)),
+            User(intent.getStringExtra("p2"), Bank(0))
+        )
         majInterface()
         initEvents()
     }
@@ -57,15 +70,18 @@ class SecondActivity : AppCompatActivity() {
                 realm.commitTransaction()
                 results += 1
                 /**
-                 * On push le nouvel objet
+                 * On créer l'objet pour l'initialiser
+                 * Et on push dans l'API
                  */
-                realm.beginTransaction()
-                var hallof = realm.createObject(hof::class.java, results)
-                hallof.maxpoints = this.maxPoints!!.toLong()
-                hallof.countnumber = 50
-                hallof.date = Date()
+                var hallof = HallOfFrame()
+                hallof.maxpoints = this.maxPoints!!
+                hallof.countNumber = 50
+                hallof.date = Date().toString()
                 hallof.name = end.name
-                realm.commitTransaction()
+                hallof.id = results
+
+                var hofCalls = HallOfFrameCalls()
+                hofCalls.addHof(this, hallof)
 
                 var dialog: AlertDialog.Builder = AlertDialog.Builder(this@SecondActivity)
                 dialog.setTitle("Game finished")
@@ -133,6 +149,11 @@ class SecondActivity : AppCompatActivity() {
         current_points.text = this.currentPot.toString()
     }
 
+    /**
+     * On met a jour l'image des dés
+     *
+     * @return void
+     */
     private fun majImageDice(first: Int, second: Int) {
         var drawableOne = this.getDrawableDice(first)
         first_dice.setImageResource(drawableOne)
