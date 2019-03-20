@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity(), HallOfFrameCalls.CallBacks<Any?> {
 
             realm.commitTransaction()
         }
-        Toast.makeText(this, "Sync done", Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "Sync done", Toast.LENGTH_SHORT).show()
         Log.d("TAG NB CURRENT", hofframe.size.toString())
     }
 
